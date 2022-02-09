@@ -1,4 +1,4 @@
-# wax节点链接,默认使用第一个节点
+# WAX Node link, using the first node by default
 rpc_domain_list:
  - https://api.wax.alohaeos.com
  - https://wax.dapplica.io
@@ -8,105 +8,105 @@ rpc_domain_list:
  - https://api.wax.greeneosio.com
  - https://wax.cryptolions.io
 
-# 原子市场节点链接,默认使用第一个节点
+# Atomic market node link, the first node is used by default
 assets_domain_list:
   - https://wax.api.atomicassets.io
   - https://atomic.wax.eosrio.io
 
-# 选中的WAX节点
+# Selected WAX node
 rpc_domain: https://api.wax.alohaeos.com
-# 选中的原子市场节点
+# Selected atomic market node
 assets_domain: https://wax.api.atomicassets.io
 
-# wax账号
+# waxaccount
 wax_account: abcde.wam
 # only http proxy like 127.0.0.1:10809
 use_proxy: false
 proxy: null
-# 建造、采集资源、养鸡、养牛、种地、会员点击，需要程序自动化的操作，设置为true
-# 建造
+# Construction, collecting resources, raising chicken, nurses, seeds, members, need to automate operation, set to TRUE
+# put up
 build: false
-# 采集资源
+# Collect resource
 mining: false
-# 养鸡
+# Chicken
 chicken: false
-# 养牛
+# Raise cattle
 cow: false
-# 种地浇水
+# Farming
 plant: false
-# 会员点击
+# Member click
 mbs: false
-# 繁殖喂养
+# Breeding feeding
 breeding: false
-# 开启会员卡存储挖矿
+# Open membership card storage mining
 mbs_mint: true
 
-#自动卖资产对应游戏里的Exchange
-#自动卖玉米
+#Automatically sell assets corresponding to Exchange
+#Automatically sell corn
 sell_corn: false
-#保留玉米数量
+#Retaining the number of corn
 remaining_corn_num: 0
-#自动卖大麦
+#Automatically sell barley
 sell_barley: false
-#保留大麦数量
+#Retain the number of barley
 remaining_barley_num: 0
-#自动卖牛奶
+#Automatically sell milk
 sell_milk: false
-#保留牛奶数量
+#Keep the number of milk
 remaining_milk_num: 0
-#自动卖鸡蛋
+#Automatically sell eggs
 sell_egg: false
-#保留鸡蛋数量
+#Retain the number of eggs
 remaining_egg_num: 0
 
-# Market市场自动购买
-# 自动买食物[玉米或大麦]（喂动物食物不够时，触发购买）
+# MARKET market is automatically purchased
+# Automatically buy food [corn or barley] (when feeding animal food is not enough, trigger purchase）
 buy_food: false
-# 一次购买的数量
+# Number of purchases
 buy_food_num: 0
-# 自动买大麦种子（种地种子不够时，触发购买，数量缺多少买多少）
+# Automatically buy barley seeds (when the seed is not enough, trigger purchase, how much is the shortage of quantity)
 buy_barley_seed: false
-# 自动买玉米种子（种地种子不够时，触发购买，数量缺多少买多少）
+# Automatically buy corn seeds (when the seed seed is not enough, trigger purchase, how much is the number of quantities)
 buy_corn_seed: false
 
 
-# 自动种作物（大麦种子|玉米种子）
-# 请先买好大麦种子、玉米种子或开启市场自动购买
+# Automatic crop (barley seeds | corn seed)
+# Please buy the barley seeds, corn seeds, or open the market.
 auto_plant: false
-#大麦种子数量
+#Number of large wheat seeds
 barleyseed_num: 0
-#玉米种子数量
+#Number of corn seeds
 cornseed_num: 0
 
-# 自动提现
+# Automatic withdrawal
 withdraw: false
-# 账号中剩余多少材料不提现
+# How many materials remain in the account
 need_fww: 0
 need_fwf: 1000
 need_fwg: 1000
-#最少提现数量，3种材料总和
+#At least the quantity, three materials sum
 withdraw_min: 500
 
-# 自动充值
+# Automatic recharge
 auto_deposit: false
-#少于多少木头充值
+#Less than how many wood recharge
 fww_min: 0
-# 每次充值木头数量
+# Number of wood per recharge
 deposit_fww: 0
-# 少于多少食物充值
+# Less than how much food recharge
 fwf_min: 0
-# 每次充值食物数量
+# Number of foods per recharge
 deposit_fwf: 10
-# 少于多少金充值
+# How much gold recharge
 fwg_min: 0
-# 每次充值金币数量
+# Number of gold coins each time
 deposit_fwg: 10
 
-# 每次补充满多少能量（一般填写账号的最大能量值）
+# How much energy is added each time (generally fill in the maximum energy value of the account)
 recover_energy: 500
-# 低于多少能量开启补充（每次操作前才会检测能量够不够，如果不够开启补充）
+# Lower than how much energy open supplements (it is not enough to detect each time, if not enough to set supplements)
 min_energy: 50
 
-#低于多少耐久度开启维修(单位%）（每次操作前才会检测能量够不够，如果不够开启维修）
+# Below how much durability open maintenance (unit%) (not enough to detect energy before each operation is not enough, if not open repair)
 min_durability: 20
 

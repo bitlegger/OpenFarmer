@@ -13,8 +13,8 @@ def run(config_file: str):
         file.close()
     load_user_param(user)
     logger.init_loger(user_param.wax_account)
-    log.info("项目开源地址：https://github.com/lintan/OpenFarmer")
-    log.info("WAX账号: {0}".format(user_param.wax_account))
+    log.info("Project open source address: https://github.com/bitlegger/OpenFarmer")
+    log.info("WAXaccount: {0}".format(user_param.wax_account))
     utils.clear_orphan_webdriver()
     farmer = Farmer()
     farmer.wax_account = user_param.wax_account
@@ -23,7 +23,7 @@ def run(config_file: str):
         log.info("use proxy: {0}".format(user_param.proxy))
     farmer.init()
     farmer.start()
-    log.info("开始自动化，请勿刷新浏览器，如需手工操作建议新开一个浏览器操作")
+    log.info("Start automation, do not refresh your browser, if you need to manually, it is recommended to open a browser operation.")
     return farmer.run_forever()
 
 

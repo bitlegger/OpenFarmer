@@ -7,17 +7,17 @@ class Settings:
     path_logs: str
     chrome_data_dir: str
     url_db: str = None
-    # 发送http请求的间隔
+    # Send the interval of the HTTP request
     req_interval = 3
-    # 发送合约请求的间隔（在http请求的间隔基础上再加几秒）
+    # Send the interval of the contract request (add a few seconds on the interval of the HTTP request)
     transact_interval = 1
-    # 每小时至少扫描一次，即使没有可用的作物，这样可以处理上次扫码后新种的作物
+    # Scan at least once per hour, even if there is no available crop, this can handle new crops after the last scan code
     max_scan_interval = timedelta(minutes=15)
-    # 每次扫描至少间隔10秒，哪怕是出错重扫
+    # Each time you scan for at least 10 seconds, even if it is wrong to sweep
     min_scan_interval = timedelta(seconds=10)
 
 
-# 用户配置参数
+# User configuration parameters
 class user_param:
     rpc_domain_list: list = []
     rpc_domain: str = None
@@ -35,7 +35,7 @@ class user_param:
     cow: bool = True
     mbs: bool = True
     mbs_mint: bool = False
-    # 能量不够的时候，就去恢复那么多能量,但不超过最大能量
+    # When the energy is not enough, it will restore so many energy, but do not exceed the maximum energy.
     recover_energy: int = 500
 
     withdraw: bool = True
@@ -49,11 +49,11 @@ class user_param:
 
     on_server: bool = False
 
-    # 账号中剩余多少材料不提现
+    # How many materials remain in the account
     need_fww: int = 200
     need_fwf: int = 200
     need_fwg: int = 200
-    # 最少提现数量，3种材料总和
+    # At least the quantity, three materials sum
     withdraw_min: int = 200
 
     remaining_corn_num: int = 0
@@ -73,12 +73,12 @@ class user_param:
 
     min_durability: int = 0
 
-    # 自动买食物
+    # Automatic buy food
     buy_food: bool = False
     buy_food_num: int = 0
-    # 自动买大麦种子
+    # Automatically buy barley seeds
     buy_barley_seed: bool = False
-    # 自动买玉米种子
+    # Automatically buy corn seeds
     buy_corn_seed: bool = False
     breeding: bool = False
 

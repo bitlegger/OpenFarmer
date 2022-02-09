@@ -104,3 +104,4 @@ def test():
 if __name__ == '__main__':
     test()
     print(plat.python_path)
+    print(plat.driver_path)

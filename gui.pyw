@@ -12,7 +12,7 @@ import utils
 from settings import load_user_param, user_param
 import os
 
-version = "1.2"
+version = "1.2en"
 
 
 def resource_path(relative_path):
@@ -35,8 +35,8 @@ class Worker(QThread):
 
     def run(self):
         logger.init_loger(user_param.wax_account)
-        log.info("项目开源地址：https://github.com/lintan/OpenFarmer")
-        log.info("WAX账号： {0}".format(user_param.wax_account))
+        log.info("Project open source address： https://github.com/bitlegger/OpenFarmer")
+        log.info("WAXaccount： {0}".format(user_param.wax_account))
         utils.clear_orphan_webdriver()
         self.farmer.rpc_domain = user_param.rpc_domain
         self.farmer.assets_domain = user_param.assets_domain
@@ -46,7 +46,7 @@ class Worker(QThread):
             log.info("use proxy: {0}".format(user_param.proxy))
         self.farmer.init()
         self.farmer.start()
-        log.info("开始自动化，请勿刷新浏览器，如需手工操作建议新开一个浏览器操作")
+        log.info("Start automation, do not refresh your browser, if you need to manually, it is recommended to open a browser operation.")
         return self.farmer.run_forever()
 
 
@@ -56,7 +56,7 @@ class MyDialog(QDialog, Ui_Dialog):
         self.user_yml = "user.yml"
         self.farmer = Farmer()
         self.setupUi(self)
-        self.setWindowTitle("农民世界助手{0}".format(version))
+        self.setWindowTitle("Peasant World Assistant{0}".format(version))
         self.setWindowIcon(QtGui.QIcon(resource_path("favicon.ico")))
         self.setWindowFlags(Qt.WindowType.WindowMinimizeButtonHint | Qt.WindowType.WindowCloseButtonHint)
         self.setFixedSize(self.size())
@@ -154,13 +154,13 @@ class MyDialog(QDialog, Ui_Dialog):
             self.spinbox_energy.setValue(user_param.recover_energy)
             self.spinbox_min_energy.setValue(user_param.min_energy)
             self.spinbox_min_durability.setValue(user_param.min_durability)
-            # 自动提现
+            # Automatic withdrawal
             self.checkbox_withdraw.setChecked(user_param.withdraw)
             self.need_fww.setText(str(user_param.need_fww))
             self.need_fwf.setText(str(user_param.need_fwf))
             self.need_fwg.setText(str(user_param.need_fwg))
             self.withdraw_min.setText(str(user_param.withdraw_min))
-            # 自动充值
+            # Automatic recharge
             self.checkbox_auto_deposit.setChecked(user_param.auto_deposit)
             self.fww_min.setText(str(user_param.fww_min))
             self.fwf_min.setText(str(user_param.fwf_min))
@@ -168,28 +168,28 @@ class MyDialog(QDialog, Ui_Dialog):
             self.deposit_fww.setText(str(user_param.deposit_fww))
             self.deposit_fwf.setText(str(user_param.deposit_fwf))
             self.deposit_fwg.setText(str(user_param.deposit_fwg))
-            # 卖玉米
+            # Corn
             self.checkbox_sell_corn.setChecked(user_param.sell_corn)
             self.remaining_corn_num.setText(str(user_param.remaining_corn_num))
-            # 卖大麦
+            # Barley
             self.checkbox_sell_barley.setChecked(user_param.sell_barley)
             self.remaining_barley_num.setText(str(user_param.remaining_barley_num))
-            # 卖牛奶
+            # Sell milk
             self.checkbox_sell_milk.setChecked(user_param.sell_milk)
             self.remaining_milk_num.setText(str(user_param.remaining_milk_num))
-            # 卖鸡蛋
+            # Egg
             self.checkbox_sell_egg.setChecked(user_param.sell_egg)
             self.remaining_egg_num.setText(str(user_param.remaining_egg_num))
-            # 自动播种
+            # Automatic planting
             self.checkbox_auto_plant.setChecked(user_param.auto_plant)
             self.barleyseed_num.setText(str(user_param.barleyseed_num))
             self.cornseed_num.setText(str(user_param.cornseed_num))
-            # 自动购买
+            # Automatic purchase
             self.checkbox_buy_food.setChecked(user_param.buy_food)
             self.checkbox_buy_barley_seed.setChecked(user_param.buy_barley_seed)
             self.checkbox_buy_corn_seed.setChecked(user_param.buy_corn_seed)
             self.buy_food_num.setText(str(user_param.buy_food_num))
-            # 繁殖
+            # Reproduction
             self.checkbox_breeding.setChecked(user_param.breeding)
 
     def setEnabled(self, status: bool):
@@ -211,13 +211,13 @@ class MyDialog(QDialog, Ui_Dialog):
 
         self.spinbox_min_energy.setEnabled(status)
         self.spinbox_min_durability.setEnabled(status)
-        # 自动提现
+        # Automatic withdrawal
         self.checkbox_withdraw.setEnabled(status)
         self.need_fww.setEnabled(status)
         self.need_fwf.setEnabled(status)
         self.need_fwg.setEnabled(status)
         self.withdraw_min.setEnabled(status)
-        # 自动充值
+        # Automatic recharge
         self.checkbox_auto_deposit.setEnabled(status)
         self.fww_min.setEnabled(status)
         self.fwf_min.setEnabled(status)
@@ -225,35 +225,35 @@ class MyDialog(QDialog, Ui_Dialog):
         self.deposit_fww.setEnabled(status)
         self.deposit_fwf.setEnabled(status)
         self.deposit_fwg.setEnabled(status)
-        # 卖玉米
+        # Corn
         self.checkbox_sell_corn.setEnabled(status)
         self.remaining_corn_num.setEnabled(status)
-        # 卖大麦
+        # Barley
         self.checkbox_sell_barley.setEnabled(status)
         self.remaining_barley_num.setEnabled(status)
-        # 卖牛奶
+        # Sell milk
         self.checkbox_sell_milk.setEnabled(status)
         self.remaining_milk_num.setEnabled(status)
-        # 卖鸡蛋
+        # Egg
         self.checkbox_sell_egg.setEnabled(status)
         self.remaining_egg_num.setEnabled(status)
-        # 自动播种
+        # Automatic planting
         self.checkbox_auto_plant.setEnabled(status)
         self.barleyseed_num.setEnabled(status)
         self.cornseed_num.setEnabled(status)
-        # 自动购买
+        # Automatic purchase
         self.checkbox_buy_food.setEnabled(status)
         self.checkbox_buy_barley_seed.setEnabled(status)
         self.checkbox_buy_corn_seed.setEnabled(status)
         self.buy_food_num.setEnabled(status)
-        # 繁殖
+        # Reproduction
         self.checkbox_breeding.setEnabled(status)
         for i in range(1, 27):
             exec('self.label_{}.setEnabled(status)'.format(i))
 
     def start(self):
         self.setEnabled(False)
-        self.setWindowTitle("农民世界助手{0}【{1}】".format(version, self.edit_account.text()))
+        self.setWindowTitle("Peasant World Assistant{0}[{1}]".format(version, self.edit_account.text()))
         self.update_ui(True)
         self.worker.start()
 
@@ -265,10 +265,10 @@ class MyDialog(QDialog, Ui_Dialog):
         self.setEnabled(True)
         with open(self.user_yml, "w") as file:
             yaml.dump(user_param.to_dict(), file, default_flow_style=False, sort_keys=False)
-        self.plain_text_edit.appendPlainText("稍等，程序正在退出...")
+        self.plain_text_edit.appendPlainText("Slightly, the program is exiting...")
         self.repaint()
         self.farmer.close()
-        self.plain_text_edit.appendPlainText("程序已退出")
+        self.plain_text_edit.appendPlainText("The program has exited")
 
     def closeEvent(self, event: QtGui.QCloseEvent):
         self.stop()

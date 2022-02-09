@@ -1,4 +1,4 @@
-# 游戏里的各种数据结构
+# Various data structures in the gameta structures in the gameta structures in the game
 from decimal import Decimal
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -10,23 +10,23 @@ farming_table = {}
 
 # nft template_id
 class NFT:
-    Barley: int = 318606  # 大麦
-    Corn: int = 318607  # 玉米
-    Chicken: int = 298614  # 大鸡
-    Chick: int = 298613  # 小鸡
-    ChickenEgg: int = 298612  # 鸡蛋
-    BabyCalf: int = 298597  # 小牛犊
-    Calf: int = 298598  # 小牛
-    FeMaleCalf: int = 298599  # 母小牛
-    MaleCalf: int = 298600  # 公小牛
-    Bull: int = 298611  # 公牛
-    DairyCow: int = 298607  # 奶牛
-    CornSeed: int = 298596  # 玉米种子
-    BarleySeed: int = 298595  # 大麦种子
-    Milk: int = 298593  # 牛奶
+    Barley: int = 318606  # barley
+    Corn: int = 318607  # corn
+    Chicken: int = 298614  # Chicken
+    Chick: int = 298613  # chick
+    ChickenEgg: int = 298612  # egg
+    BabyCalf: int = 298597  # Calf
+    Calf: int = 298598  # calf
+    FeMaleCalf: int = 298599  # Maiden
+    MaleCalf: int = 298600  # Male cattle
+    Bull: int = 298611  # bull
+    DairyCow: int = 298607  # Cow
+    CornSeed: int = 298596  # Corn seed
+    BarleySeed: int = 298595  # Barley seed
+    Milk: int = 298593  # milk
 
 
-# 金、木、食物、能量
+# Gold, wooden, food, energy
 @dataclass(init=False)
 class Resoure:
     energy: Decimal = None
@@ -50,7 +50,7 @@ class MbsSavedClaims:
     Gold: int = 0
 
 
-# 可操作的作物
+# Operable crop
 @dataclass(init=False)
 class Farming:
     asset_id: str = None
@@ -60,20 +60,20 @@ class Farming:
 
     def show(self, more=True) -> str:
         if more:
-            return f"[{self.name}] [{self.asset_id}] [可操作时间:{utils.show_time(self.next_availability)}]"
+            return f"[{self.name}] [{self.asset_id}] [Operating time:{utils.show_time(self.next_availability)}]"
         else:
             return f"[{self.name}] [{self.asset_id}]"
 
 
 # ==== Food =====
-# 牛奶
+# milk
 @dataclass(init=False)
 class Milk(Farming):
     name: str = "Milk"
     template_id: int = 298593
 
 
-# 玉米
+# corn
 @dataclass(init=False)
 class Corn(Farming):
     name: str = "Corn"
@@ -81,7 +81,7 @@ class Corn(Farming):
     golds_cost: int = 82
 
 
-# 大麦
+# barley
 @dataclass(init=False)
 class Barley(Farming):
     name: str = "Barley"
@@ -97,28 +97,28 @@ farming_table.update({cls.template_id: cls for cls in supported_foods})
 
 # ################### Animal ######################
 
-# 动物
+# animal
 @dataclass(init=False)
 class Animal(Farming):
-    # 能量消耗
+    # energy consumption
     energy_consumed: int = None
-    # 当前喂养次数
+    # Current number of feeding
     times_claimed: int = None
-    # 最大喂养次数
+    # Maximum number of feeding
     required_claims: int = None
-    # 最后喂养时间
+    # Final feeding time
     last_claimed: datetime = None
-    # 喂养时间列表
+    # Feeding time list
     day_claims_at: List[datetime] = None
-    # 间隔
+    # interval
     charge_time: timedelta = None
-    # 24小时喂养次数
+    # 24-hour feeding
     daily_claim_limit: int = None
-    # 消耗的nft
+    # Consumed NFT
     consumed_card: int = None
-    # 所属建筑
+    # Building
     required_building: int = None
-    # 繁殖
+    # Reproduction
     bearer_id: int = None
     partner_id: int = None
 
@@ -128,71 +128,71 @@ class Animal(Farming):
                 next_op_time = self.day_claims_at[0] + timedelta(hours=24)
                 self.next_availability = max(self.next_availability, next_op_time)
             if not breeding:
-                text = f"[{self.name}] [{self.asset_id}][24小时喂养次数{len(self.day_claims_at)}/{self.daily_claim_limit}] [喂养次数{self.times_claimed}/{self.required_claims}] [可操作时间:{utils.show_time(self.next_availability)}] "
+                text = f"[{self.name}] [{self.asset_id}][24-hour feeding{len(self.day_claims_at)}/{self.daily_claim_limit}] [喂养次数{self.times_claimed}/{self.required_claims}] [可操作时间:{utils.show_time(self.next_availability)}] "
             else:
-                text = f"[{self.name}繁殖] [{self.bearer_id}][24小时喂养次数{len(self.day_claims_at)}/{self.daily_claim_limit}] [喂养次数{self.times_claimed}/{self.required_claims}] [可操作时间:{utils.show_time(self.next_availability)}] "
+                text = f"[{self.name}Reproduction] [{self.bearer_id}][24-hour feeding{len(self.day_claims_at)}/{self.daily_claim_limit}] [喂养次数{self.times_claimed}/{self.required_claims}] [可操作时间:{utils.show_time(self.next_availability)}] "
             return text
         else:
             return f"[{self.name}] [{self.asset_id}]"
 
 
-# 大鸡
+# Chicken
 @dataclass(init=False)
 class Chicken(Animal):
     name: str = "Chicken"
     template_id: int = 298614
 
 
-# 小鸡
+# chick
 @dataclass(init=False)
 class Chick(Animal):
     name: str = "Chick"
     template_id: int = 298613
 
 
-# 小鸡
+# chick
 @dataclass(init=False)
 class ChickenEgg(Animal):
     name: str = "ChickenEgg"
     template_id: int = 298612
 
 
-# 小牛犊
+# Calf
 @dataclass(init=False)
 class BabyCalf(Animal):
     name: str = "BabyCalf"
     template_id: int = 298597
 
 
-# 小牛
+# calf
 @dataclass(init=False)
 class Calf(Animal):
     name: str = "Calf"
     template_id: int = 298598
 
 
-# 母小牛
+# Maiden
 @dataclass(init=False)
 class FeMaleCalf(Animal):
     name: str = "FeMaleCalf"
     template_id: int = 298599
 
 
-# 公小牛
+# Male cattle
 @dataclass(init=False)
 class MaleCalf(Animal):
     name: str = "MaleCalf"
     template_id: int = 298600
 
 
-# 公牛
+# bull
 @dataclass(init=False)
 class Bull(Animal):
     name: str = "Bull"
     template_id: int = 298611
 
 
-# 奶牛
+# Cow
 @dataclass(init=False)
 class DairyCow(Animal):
     name: str = "Dairy Cow"
@@ -217,7 +217,7 @@ def init_animal_config(rows: List[dict]):
             animal_class.required_building = item["required_building"]
 
 
-# 动物-从http返回的json数据构造对象
+# Animals - JSON data constructors returned from HTTP
 def create_animal(item: dict, breeding=False) -> Animal:
     animal_class = farming_table.get(item["template_id"], None)
     if not animal_class:
@@ -232,16 +232,16 @@ def create_animal(item: dict, breeding=False) -> Animal:
     if not breeding:
         animal.asset_id = item["asset_id"]
     else:
-        animal.required_claims = 9  # 繁殖目前就只有奶牛，先写死
-        animal.daily_claim_limit = 3  # 繁殖目前就只有奶牛，先写死
-        animal.consumed_card = 318607  # 繁殖目前就只有奶牛，先写死
+        animal.required_claims = 9  #Breeding is only a cow, first write
+        animal.daily_claim_limit = 3  # Breeding is only a cow, first write
+        animal.consumed_card = 318607  # Breeding is only a cow, first write
         animal.bearer_id = item["bearer_id"]
         animal.partner_id = item["partner_id"]
 
     return animal
 
 
-# 动物-从http返回的json数据构造对象
+# Animals - JSON data constructors returned from HTTP
 def create_breeding(item: dict) -> Animal:
     animal_class = farming_table.get(item["template_id"], None)
     if not animal_class:
@@ -261,27 +261,27 @@ def create_breeding(item: dict) -> Animal:
 
 ####################################################### Crop #######################################################
 
-# 农作物，大麦，玉米
+# Crop, barley, corn
 @dataclass(init=False)
 class Crop(Farming):
     times_claimed: int = None
     last_claimed: datetime = None
 
-    # 最大耕作次数
+    # Maximum number of farming
     required_claims: int = None
-    # 能量消耗
+    # energy consumption
     energy_consumed: int = None
-    # 浇水间隔
+    # Watering spacer
     charge_time: timedelta = None
 
     def show(self, more=True) -> str:
         if more:
-            return f"[{self.name}] [{self.asset_id}] [耕作次数{self.times_claimed}/{self.required_claims}] [可操作时间:{utils.show_time(self.next_availability)}]"
+            return f"[{self.name}] [{self.asset_id}] [Farming number{self.times_claimed}/{self.required_claims}] [Operating time:{utils.show_time(self.next_availability)}]"
         else:
             return f"[{self.name}] [{self.asset_id}]"
 
 
-# 大麦种子
+# Barley seed
 @dataclass(init=False)
 class BarleySeed(Crop):
     name: str = "Barley Seed"
@@ -289,7 +289,7 @@ class BarleySeed(Crop):
     golds_cost: int = 50
 
 
-# 玉米种子
+# Corn seed
 @dataclass(init=False)
 class CornSeed(Crop):
     name: str = "Corn Seed"
@@ -312,7 +312,7 @@ def init_crop_config(rows: List[dict]):
             crop_class.required_claims = item["required_claims"]
 
 
-# 从json构造农作物对象
+# Constructing crop objects from JSON
 def create_crop(item: dict) -> Crop:
     crop_class = farming_table.get(item["template_id"], None)
     if not crop_class:
@@ -328,87 +328,87 @@ def create_crop(item: dict) -> Crop:
 
 ####################################################### Tool #######################################################
 
-# 工具
+# tool
 @dataclass(init=False)
 class Tool(Farming):
-    # 当前耐久
+    # Current durable
     current_durability: Decimal = None
-    # 最大耐久
+    # Maximum durable
     durability: Decimal = None
 
-    # 产出资源类型
+    # Output resource type
     mining_type: str = None
-    # 挖矿间隔
+    # Minerality
     charge_time: timedelta = None
-    # 能量消耗
+    # energy consumption
     energy_consumed: int = None
-    # 耐久消耗
+    # Durable consumption
     durability_consumed: int = None
 
     def show(self, more=True) -> str:
         if more:
-            return f"[{self.name}] [{self.asset_id}] [耐久度{self.current_durability}/{self.durability}] [可操作时间:{utils.show_time(self.next_availability)}]"
+            return f"[{self.name}] [{self.asset_id}] [Durability{self.current_durability}/{self.durability}] [Operating time:{utils.show_time(self.next_availability)}]"
         else:
             return f"[{self.name}] [{self.asset_id}]"
 
 
-# 斧头
+# ax
 @dataclass(init=False)
 class Axe(Tool):
     name: str = "Axe"
     template_id: int = 203881
 
 
-# 石斧
+# Stone bargain
 @dataclass(init=False)
 class StoneAxe(Tool):
     name: str = "Stone Axe"
     template_id: int = 260763
 
 
-# 古代石斧
+# Ancient stone
 @dataclass(init=False)
 class AncientStoneAxe(Tool):
     name: str = "Ancient Stone Axe"
     template_id: int = 378691
 
 
-# 锯子
+# Saw
 @dataclass(init=False)
 class Saw(Tool):
     name: str = "Saw"
     template_id: int = 203883
 
 
-# 电锯
+# Chainsaw
 @dataclass(init=False)
 class Chainsaw(Tool):
     name: str = "Chainsaw"
     template_id: int = 203886
 
 
-# 钓鱼竿
+# Fishing rod
 @dataclass(init=False)
 class FishingRod(Tool):
     name: str = "Fishing Rod"
     template_id: int = 203887
 
 
-# 渔网
+# Fish net
 @dataclass(init=False)
 class FishingNet(Tool):
     name: str = "Fishing Net"
     template_id: int = 203888
 
 
-# 渔船
+# Fishing boat
 @dataclass(init=False)
 class FishingBoat(Tool):
     name: str = "Fishing Boat"
     template_id: int = 203889
 
 
-# 挖掘机
+# excavator
 @dataclass(init=False)
 class MiningExcavator(Tool):
     name: str = "Mining Excavator"
@@ -430,7 +430,7 @@ def init_tool_config(rows: List[dict]):
             tool_class.durability_consumed = item["durability_consumed"]
 
 
-# 从json构造工具对象
+# Tool object from JSON
 def create_tool(item: dict) -> Tool:
     tool_class = farming_table.get(item["template_id"], None)
     if not tool_class:
@@ -447,7 +447,7 @@ def create_tool(item: dict) -> Tool:
 
 ####################################################### MBS  #######################################################
 
-# 会员卡
+# membership card
 @dataclass(init=False)
 class MBS(Farming):
     energy_consumed: int = 100
@@ -460,9 +460,9 @@ class MBS(Farming):
 
     def show(self, more=True) -> str:
         if more:
-            return f"[{self.name}] [类型:{self.type}] [asset_id:{self.asset_id}] [可操作时间:{utils.show_time(self.next_availability)}]"
+            return f"[{self.name}] [type:{self.type}] [asset_id:{self.asset_id}] [Operating time:{utils.show_time(self.next_availability)}]"
         else:
-            return f"[{self.name}] [类型:{self.type}]"
+            return f"[{self.name}] [type:{self.type}]"
 
 
 mbs_table: Dict[int, MBS] = {}
@@ -474,7 +474,7 @@ def init_mbs_config(rows: List[dict]):
         mbs_table[item["template_id"]] = mbs
 
 
-# 从json构造mbs对象
+# Construct MBS object from JSON
 def create_mbs(item: dict) -> MBS:
     mbs_class = mbs_table.get(item["template_id"], None)
     if not mbs_class:
@@ -488,10 +488,10 @@ def create_mbs(item: dict) -> MBS:
 ####################################################### MBS #######################################################
 
 
-# 建筑物
+# building
 @dataclass(init=False)
 class Building(Farming):
-    # 能量消耗 牛棚300，鸡舍250，田200
+    # Energy consumption of cowshed 300, chicken house 250, field 200
     energy_consumed: int = 300
     times_claimed: int = None
     last_claimed: datetime = None
@@ -500,7 +500,7 @@ class Building(Farming):
     num_slots: int = None
 
 
-# NFT资产，可以是小麦，小麦种子，牛奶等
+# NFT assets, can be wheat, wheat seeds, milk, etc.
 @dataclass(init=False)
 class Asset:
     asset_id: str

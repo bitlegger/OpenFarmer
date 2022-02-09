@@ -1,149 +1,145 @@
 ## OpenFarmer
 
->该脚本基于https://github.com/encoderlee/OpenFarmer 开发，在他的功能基础上增加了一些功能，感谢这位大佬无私奉献。
+> This script is based on https://github.com/lintan/OpenFarmer, the manual and code translated to english, plan to add some features on the basis of his feature, thanks to this big selfless dedication.
 
-### 一个免费、开源的农民世界 FarmersWorld 挂机脚本
+### A free, open source farmer world farmersworld hang-up script
 
-可视化界面图例：
+Visual interface
 
-![image](https://static.umaske.com/121212_20220114141141.png)
+! [Image] (https://github.com/bitlegger/OpenFarmer/raw/master/doc/demo-gui1.png)
+! [Image] (https://github.com/bitlegger/OpenFarmer/raw/master/doc/demo-gui2.png)
 
-命令行界面图例：
+Command line interface legend:
 
-![image](https://static.umaske.com/20211231114612.png)
-### 初衷
+! [Image] (https://github.com/bitlegger/OpenFarmer/raw/master/doc/demo-main1.png)
 
-农民世界 https://farmersworld.io 的火热相信大家已经有目共睹
+### Original intention
 
-网上各种辅助脚本也是满天飞，可是2021年11月7日某脚本商实施的大面积盗号事件让广大farmer伤心和愤怒
+The popularity of Farmersworld https://farmersworld.io is believed to be obvious to all.
 
-于是我决定免费开源自己写的一个简陋的挂机脚本，没有华丽的界面，只有简单的配置文件和命令行，虽然不好看，但是绝对安心可用
+Various auxiliary scripts on the Internet are also flying all over the sky, but the large-scale hacking incident carried out by a script company on November 7, 2021 made the majority of farmers sad and angry.
 
-代码完全公开，不含任何二进制可执行文件，不含任何后门病毒，完全经得住检验
+So I decided to open a simple hang-up script that I wrote, there is no gorgeous interface, only simple profiles and command lines, although it is not good, but absolutely peaceful
 
-同时，欢迎大家提 BUG 和 Push 代码，不断的完善它
+The code is fully open, excluding any binary executable, does not include any back door virus, completely deserving inspection
 
-本项目使用 python3 + selenium 开发
+At the same time, you are welcome to mention bugs and push code, constantly improve it.
 
-跨平台运行，支持 Windows、Linux、MacOS
+This project uses Python3 + Selenium development
 
-原理思路见：https://blog.csdn.net/CharlesSimonyi/article/details/121413962
+Expans the platform, support Windows, Linux, MacOS
 
-也欢迎关注我的CSDN博客
 
-欢迎加入 Telegram 群组反馈问题：https://t.me/OpenFarmer
+### Features
 
-### 功能
+1. Support a computer on a computer
+2. Support to set up HTTP proxy
+3. Support all tools under Mining (ax, stone ax, saw, fishing rod, fishing net, fishing boat, excavator, etc.)
+4. Support all crops (barley, corn) under Plant, automatic planting
+5. Support Eggs -> Chick -> Chicken Automatic Feeding
+6. Support the calf -> Cattle -> Dairy feeding
+7. Support membership card automatic click
+8. Tool durable automatic repair (please prepare enough gold coins)
+9. Energy is insufficient automatically (please have enough meat)
+10. Support automatic construction (new number for the first time COOP and FARM PLOT requires 8 operations)
+11. Support eggs, milk, barley, maize automatic sale
+12. Support food, gold insufficient automatic recharge
+13. Automatic speed when supporting 5% ratio
 
-1. 支持一台电脑上多开
-2. 支持设置HTTP代理
-3. 支持Mining下的所有工具（斧头、石斧、锯子、钓鱼竿、渔网、渔船、挖掘机等）的自动采集
-4. 支持Plant下的所有农作物（大麦、玉米）的自动浇水，自动种地
-5. 支持鸡蛋->小鸡->鸡的自动喂养
-6. 支持小牛犊->小牛->奶牛的喂养
-7. 支持会员卡的自动点击
-8. 工具耐久不足自动修理（请准备好足够修理的金币）
-9. 能量不足自动补充（请准备好足够的肉）
-10. 支持自动建造（新号第一次建造 COOP 和 FARM PLOT需要点8次的操作）
-11. 支持鸡蛋、牛奶、大麦、玉米自动售卖
-12. 支持食物、金子不足自动充值
-13. 支持5%费率的时候自动提现
 
-### 用法一
+### Use
 
-嫌麻烦的同学可以直接在github页面右侧的【Releases】处下载最新的打包版本，该版本只支持windows 64位系统，建议在win10系统上运行，把压缩包里的目录解压出来，双击运行【gui.exe】即可，命令行版本可运行【main.exe】，使用命令行版本前需手工修改配置文件【user.yml】
+Suspected students can download the latest packaged version directly on the [Releases] on the right side of the GitHub page, which only supports the Windows 64-bit system. It is recommended to run on the Win10 system, extract the directory in the compressed package, double-click to run [Gui.exe] You can, the command line version can run [main.exe], need to manually modify the configuration file before using the command line version [user.yml]
 
-对安全性有要求，喜欢捣鼓代码的，建议从源码运行，根据下面的步骤一步步来
+There is a requirement for security, like the drum code, it is recommended to run from the source code, step by step according to the following steps.
 
-### 用法二
-
-1. 点击当前页面的【Code】=> git clone 源码到本地，或 Download ZIP 下载源码到本地
-2. 下载安装python3 (版本须大于等于python3.7)
+### Use
+1. Click [CODE] => gitclone source to the local, or Download Zip Download Source Code to Local
+2. Download and install Python3 (version must be greater than equals Python3.7)
    
-   请到python官网下载最新版本：
+   Please download the latest version to Python official website:
    https://www.python.org/downloads/
    
-   【注意】安装时请记得勾选【Add Python 3.10 to PATH】
-3. 双击运行 【install_depends.py】 来安装依赖包，一台电脑只需要安装一次即可
-   【注意】安装依赖包前请关闭翻墙代理，关闭科学上网，不然无法从豆瓣pypi镜像站下载依赖包
-4. 安装Chrome浏览器，并升级到最新版（用当前版本也行，确保和ChromeDriver版本一致）
-5. 下载ChromeDriver，版本确保和Chrome版本一致
-
+   [Note] Please remember to check [Add Python 3.10 to Path]
+3. Double-click to run [Install_Depends.py] to install the dependencies, one computer only needs to install it once
+   [Note] Please turn off the wall agent before installing and dependent, turn off the scientific Internet, otherwise you can't download the dependent package from Douban PYPI Mirror Station.
+4. Install the Chrome browser and upgrade to the latest version (in the current version, make sure that the Chromedriver version is consistent)
+5. Download Chromedriver, version to ensure that the Chrome version is consistent
 https://chromedriver.chromium.org/downloads
 
-    比如我的Chrome版本是 97.0.4664.45
+For example, my Chrome version is 97.0.4664.45
 
-    那么我就下载 ChromeDriver 97.0.4664.45
+    Then I will download Chromedriver 97.0.4664.45
 
-    其实小版本不一致也没关系，大版本号97一致就行
+    In fact, the small version is inconsistent, it doesn't matter, the big version number 97 is consistent
    
-   windows系统的话下载【chromedriver_win32.zip】
-6. 将下载的 ChromeDriver 压缩包中的 chromedriver.exe 文件，解压到本项目的源码目录中（和 main.py 在一个目录中）
-7. 修改配置文件【user.yml】 
-   1. 复制一份 user.yml.example 文件，改名为 user.yml
-   2. 按照你的实际情况设置各个参数（修改user.yml推荐使用nodepad++编辑器，下载链接：[点击下载nodepad++编辑器](https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.2/npp.8.2.Installer.x64.exe)）
-   3. wax_account: (wax账号，也就是wax钱包地址,以.wam结尾)
-   4. proxy: (可设置http代理，格式为127.0.0.1:10809，不需要代理的话设置为null)
-   5. 下面的（build、mining、chicken、cow、plant、mbs)分别对应建造、采集资源、养鸡、养牛、种地、会员点击，需要程序自动化的操作，设置为true，不需要程序自动化的操作，设置为false，比如你只种地的话，plant: true 即可，其它全部为false，这样减少不必要的网络操作，提高运行效率 
-   6. recover_energy: 500 (能量不够时恢复到多少能量，默认500，请准备足够的肉，程序不会自动去买肉)
-   7. 建造、采集资源、养鸡、养牛、种地、会员点击，需要程序自动化的操作，设置为true
-   8. 其他参数按照你的实际情况设置
+   Windows system Download [chromedriver_win32.zip]
+6. Differently extract the chromedriver.exe file in the downloaded Chromedriver compression package into the source directory of this item (and main.py in a directory)
+7. Modify the configuration file [user.yml]
+   1. Copy a user.yml.example file, renamedered User.yml
+   2. Set the various parameters according to your actual situation (Modify User.yml recommended using the NodePad ++ editor, download link: [Click to download NodePad ++ Editor] (https://github.com/notepad-plus-plus/notepad-plus- Plus / Releases / Download / V8.2 / NPP.8.2.Installer.x64.exe))))
+   3. WAX_ACCOUNT: (WAX account, that is, the WAX ​​wallet address, ending with .wam)
+   4. Proxy: (You can set the HTTP agent, the format is 127.0.0.1:10809, if you do not need the agent, set to null)
+   5. BUILD, MINING, Chicken, COW, Plant, MBS respectively correspond to construction, collecting resources, raising chicken, random, members, members, requires operational operations, setting up to TRUE, no need to automation Operation, set to false, such as you only grow, Plant: True, all of the other is false, which reduces unnecessary network operations, improve operation efficiency
+   6. Recover_ENERGY: 500 (If the energy is not enough to return to how much energy, the default 500, please prepare enough meat, the program will not automatically buy meat)
+   7. Construction, collect resources, raise chicken, nurses, seeds, members, need to automate operation, set to true
+   8. Other parameters are set according to your actual situation
    
-8. 修改完配置文件后，双击 【main.py】 运行脚本，程序如果异常退出，可以到 logs 文件夹下查看日志
-9. 脚本启动后，会弹出一个Chrome窗口并自动打开 FarmersWorld 官网，第一次启动请手工登录游戏，登录成功后，脚本会开始自动化操作
-10. 如果需要手工操作，请勿在脚本打开的Chrome窗口中操作，脚本打开的Chrome窗口，最小化即可，尽量不要动它，需要手工操作的时候，请另开Chrome浏览器登录游戏，该游戏本身就可同时在多个浏览器中登录，不会把脚本Chrome中的游戏T下线
-11. 注意，一个账号第一次运行脚本，脚本第一次自动收割农作物的时候，Chrome浏览器中可能会弹出WAX钱包授权窗口，并停在那里不动了，这个时候需要勾选自动确认交易，并同意交易，这样脚本以后就能自动处理了，其实和人工操作是一样的，第一次收割的时候，也要点自动同意交易，否则每次都要弹出授权窗口来，脚本只负责收割农作物，不处理授权的事情，是否自动授权取决于用户账号设置
-12. 脚本多开，请把整个源码目录复制一份，在另一个目录中修改配置文件【user.yaml】为另一个账号，双击运行 【main.py】 启动第二个脚本，以此类推，多开互不干扰
-13. 正确关闭程序，请点击脚本控制台窗口右上角的X，稍等几秒钟便会关闭，或者点击脚本控制台窗口后，按Ctrl+C，尽量不要直接关闭脚本控制的Chrome窗口，否则webdriver容易产生一些僵尸进程
+8. After modifying the configuration file, double-click [main.py] to run the script, if the program exits, you can view the log in the logs folder.
+9. After the script is started, a Chrome window will pop up and automatically open the FarMersWorld official website. For the first time, please log in manually. After login is successful, the script will start automation
+10. If you need manual operation, do not operate in the Chrome window opened in the script, the script opens the chrome window, minimized, try not to move it, ask for hand-to-hand, please open the Chrome browser to log in to the game. The game itself can log in in multiple browsers at the same time, and will not put the game t in the script chrome.
+11. Note that an account will run the script for the first time. When the script is automatically harvested, the WAX ​​wallet authorization window may pop up in the Chrome browser, and stop there, this time you need to check the automatic confirmation transaction. And agree to the transaction, so that the script will be automatically processed, in fact, the first harvesting, the first harvesting, it is necessary to automatically agree to the transaction, otherwise, each time you have to pop up the authorization window, the script is only responsible for harvesting crops. Do not deal with authorized things, auto-authorization depends on user account settings
+12. Script is more open, please copy the entire source directory, modify the configuration file in another directory [user.yaml] to another account, double-click Run [main.py] to start the second script, with this, Multi-to-interference
+13. Correctly shut down the program, click on the X X in the upper right corner of the script console window, will be closed, or click the script console window, press Ctrl + C, try not to close the script controlled Chrome window, otherwise WebDriver is easy to produce some zombie process
 
 
-> ！！！如果因为环境问题双击打不开python文件，可以使用命令行
+> ! ! ! If you can't open the Python file because you don't do it, you can use the command line.
 
-### 命令行运行脚本
+### Command line run the script
 
->前提是完成上面的步骤，安装好python环境，安装好依赖
+> Premise is to complete the above steps, install the Python environment, install dependence
 
-打开命令行工具（建议下载cmder命令行工具，下载链接：[点击下载cmder命令行工具](https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder_mini.zip)）
+Open the command line tool (recommended to download the cmder command line tool, download link: [Click to download CMDER command line tool] (https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder_mini.zip))
 
-进入项目目录（假设项目放在D盘的OpenFarmer目录）
+Enter the project directory (assuming the project in the OpenFARMER directory of the D disk)
 
-1、在命令行工具输入  D: 【按回车】
+1. Enter d: [Press Enter] in the command line tool
 
-2、cd D:/OpenFarmer 【按回车】
+2, CD D: / OpenFARMER [press Enter]
 
-（如果未安装依赖，可以先执行 python install_depends.py ）
+(If you do not install dependencies, you can execute python install_depends.py first.
 
-3、python main.py 【按回车】（有些环境是py main.py）
+3, python main.py [press Enter] (some environment is py main.py)
 
-### 常见问题
-1.程序日志显示，已经成功喂鸡，成功浇水，成功采集了，为什么Chrome中的游戏界面上还是显示没有喂鸡，没有浇水，没有采集？
+### common problem
+1. The program log shows that the chicken has been successfully added, and it is successfully watered, and it has been successfully collected. Why is the game interface in Chrome still showing no bonus, no watering, no collection?
 
-这是因为程序是通过直接调用智能合约的方式进行的操作，Chrome中游戏界面并不会自动更新，实际上只要日志显示操作成功，就已经操作成功了，Chrome中的游戏界面不更新，无需理会，你可以重新开一个Chrome窗口，重新登录游戏查看，到底操作成功了没有
+This is because the program is the operation of directly calling the intelligent contract. The game interface in Chrome will not be updated. In fact, as long as the log display operation is successful, it has been successful, and the game interface in Chrome is not updated, no need to pay attention You can reopeize a chrome window, log in to the game, and have no success.
 
-2.无法使用google账号登录，提示此浏览器或应用可能不安全？
+2. Cannot log in with the Google account, prompt this browser or application may not be safe?
 
-![image](https://raw.githubusercontent.com/encoderlee/OpenFarmer/main/doc/question1.png)
+! [image] (https://Raw.githubuserContent.com/encoderlee/openfarmer/main/doc/question1.png)
 
-这是因为Chrome本身就是google家的，google判断到该Chrome浏览器正受程序控制，便判定为不安全，不允许登录。解决办法就是在WAX云钱包登录界面，点【Forgot Password】（忘记密码），输入google邮箱账号，根据提示重置密码（可以重置为和原来一样的密码），重置成功后，便可在WAX云钱包登录界面，直接输入google邮箱账号和重置后的密码进行登录，而不需要点google图标，不需要通过google账号登录。
-
-
-### 打赏
-
-欢迎打赏，支持我继续不断完善这个项目
-
-TRC20地址: TXmvTZ3ndHpvJU7SYmuLdLBufWdxA34Qix
-
-WAX地址：openfarmercn（这个账号和xxxx.wam一样，支持WAX、FWW、FWF、FWG）
-
-### 感谢!
+This is because Chrome itself is Google home, Google judges that the Chrome browser is being controlled, and it is not safe and logged in. The solution is to log in the WAX ​​cloud money package, click [Forgot Password], enter the Google Mailpick account, reset the password according to the prompt (can be reset to the same password as the original password), can be reset, Wax cloud money package login interface, enter the Google Mail account and reset the password to log in, without a point Google icon, do not need to log in with the Google account.
 
 
-### 我的其他作品
+### Restaurant
 
-> 农民世界中文教程：[https://fww.umaske.com](https://fww.umaske.com)
+Welcome to reward, support me to continue to improve english version of this project.
+
+My WAX address: bitleggerthx (account support WAX, FWW, FWF, FWG)
+
+To support author of Chinese version use this wallets:
+TRC20 address: Txmvtz3ndhpvju7symuldlbufwdxa34QIX
+WAX address: OpenFARMERCN (account support WAX, FWW, FWF, FWG)
+
+### grateful!
+
+
+### Other works by the author of the basic Chinese version
+
+> Peasant World Chinese Tutorial: [https://fww.umaske.com] (https://fww.umaske.com)
 >
-> 农民世界实时监控中文版：[https://fw.umaske.com](https://fw.umaske.com)
+> Peasant World Real-Time Monitoring Chinese: [https://fw.umaske.com] (https://fw.umaske.com)
 >
->【农民世界助手-Anchor钱包版】：[https://github.com/lintan/OpenFarmerOnAnchor](https://github.com/lintan/OpenFarmerOnAnchor)
-
-
+> [Peasant World Assistant --anchor Wallet Edition]: [https://github.com/lintan/openfarmeronanchor] (https://github.com/lintan/openfarmeronanchor)
