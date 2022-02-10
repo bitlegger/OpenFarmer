@@ -129,9 +129,13 @@ Welcome to reward, support me to continue to improve english version of this pro
 
 My WAX address: bitleggerthx (account support WAX, FWW, FWF, FWG)
 
+
 To support author of Chinese version use this wallets:
+
 TRC20 address: Txmvtz3ndhpvju7symuldlbufwdxa34QIX
+
 WAX address: OpenFARMERCN (account support WAX, FWW, FWF, FWG)
+
 
 ### grateful!
 
