@@ -6,12 +6,12 @@
 
 Visual interface
 
-! [Image] (./doc/demo-gui1.png)
-! [Image] (./doc/demo-gui2.png)
+! [Image] (https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-gui1.png)
+! [Image] (https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-gui2.png)
 
 Command line interface legend:
 
-! [Image] (./doc/demo-main1.png)
+! [Image] (https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-main1.png)
 
 ### Original intention
 
