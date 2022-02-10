@@ -11,7 +11,7 @@ Visual interface
 
 Command line interface legend:
 
-![Image](https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-main1.png)
+![Image](https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-main.png)
 
 ### Original intention
 
