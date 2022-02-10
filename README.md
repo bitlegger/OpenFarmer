@@ -6,12 +6,12 @@
 
 Visual interface
 
-! [Image] (https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-gui1.png)
-! [Image] (https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-gui2.png)
+! [Image](https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-gui1.png)
+! [Image](https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-gui2.png)
 
 Command line interface legend:
 
-! [Image] (https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-main1.png)
+! [Image](https://raw.githubusercontent.com/bitlegger/OpenFarmer/main/doc/demo-main1.png)
 
 ### Original intention
 
@@ -118,7 +118,7 @@ This is because the program is the operation of directly calling the intelligent
 
 2. Cannot log in with the Google account, prompt this browser or application may not be safe?
 
-! [image] (https://Raw.githubuserContent.com/encoderlee/openfarmer/main/doc/question1.png)
+! [image](https://Raw.githubuserContent.com/encoderlee/openfarmer/main/doc/question1.png)
 
 This is because Chrome itself is Google home, Google judges that the Chrome browser is being controlled, and it is not safe and logged in. The solution is to log in the WAX ​​cloud money package, click [Forgot Password], enter the Google Mailpick account, reset the password according to the prompt (can be reset to the same password as the original password), can be reset, Wax cloud money package login interface, enter the Google Mail account and reset the password to log in, without a point Google icon, do not need to log in with the Google account.
 
