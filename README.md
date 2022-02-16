@@ -32,19 +32,19 @@ Expans the platform, support Windows, Linux, MacOS
 
 ### Features
 
-1. Support a computer on a computer
+1. Support multiple openings on one computer
 2. Support to set up HTTP proxy
 3. Support all tools under Mining (ax, stone ax, saw, fishing rod, fishing net, fishing boat, excavator, etc.)
 4. Support all crops (barley, corn) under Plant, automatic planting
 5. Support Eggs -> Chick -> Chicken Automatic Feeding
-6. Support the calf -> Cattle -> Dairy feeding
+6. Support the Calf -> Cattle -> Dairy cow feeding
 7. Support membership card automatic click
-8. Tool durable automatic repair (please prepare enough gold coins)
-9. Energy is insufficient automatically (please have enough meat)
+8. Automatic repair of worn tools (please prepare enough gold coins)
+9. Energy is automatically replenished (please have enough meat)
 10. Support automatic construction (new number for the first time COOP and FARM PLOT requires 8 operations)
-11. Support eggs, milk, barley, maize automatic sale
-12. Support food, gold insufficient automatic recharge
-13. Automatic speed when supporting 5% ratio
+11. Support eggs, milk, barley, corn automatic sale
+12. Support automatic replenishment of insufficient food and gold
+13. Automatic withdrawal when 5% fee withdrawal rate
 
 
 ### Use
@@ -56,39 +56,39 @@ There is a requirement for security, like the drum code, it is recommended to ru
 ### Use
 1. Click [CODE] => gitclone source to the local, or Download Zip Download Source Code to Local
 2. Download and install Python3 (version must be greater than equals Python3.7)
-   
+
    Please download the latest version to Python official website:
    https://www.python.org/downloads/
-   
-   [Note] Please remember to check [Add Python 3.10 to Path]
+
+   [Note] Please remember to check [Add Python 3.10 to Path].
 3. Double-click to run [Install_Depends.py] to install the dependencies, one computer only needs to install it once
    [Note] Please turn off the wall agent before installing and dependent, turn off the scientific Internet, otherwise you can't download the dependent package from Douban PYPI Mirror Station.
-4. Install the Chrome browser and upgrade to the latest version (in the current version, make sure that the Chromedriver version is consistent)
+4. Install the Chrome browser and upgrade to the latest version (in the current version, make sure that the Chromedriver version is consistent).
 5. Download Chromedriver, version to ensure that the Chrome version is consistent
-https://chromedriver.chromium.org/downloads
+   https://chromedriver.chromium.org/downloads
 
 For example, my Chrome version is 97.0.4664.45
 
     Then I will download Chromedriver 97.0.4664.45
 
     In fact, the small version is inconsistent, it doesn't matter, the big version number 97 is consistent
-   
-   Windows system Download [chromedriver_win32.zip]
-6. Differently extract the chromedriver.exe file in the downloaded Chromedriver compression package into the source directory of this item (and main.py in a directory)
-7. Modify the configuration file [user.yml]
-   1. Copy a user.yml.example file, renamedered User.yml
-   2. Set the various parameters according to your actual situation (Modify User.yml recommended using the NodePad ++ editor, download link: [Click to download NodePad ++ Editor] (https://github.com/notepad-plus-plus/notepad-plus- Plus / Releases / Download / V8.2 / NPP.8.2.Installer.x64.exe))))
-   3. WAX_ACCOUNT: (WAX account, that is, the WAX ​​wallet address, ending with .wam)
-   4. Proxy: (You can set the HTTP agent, the format is 127.0.0.1:10809, if you do not need the agent, set to null)
-   5. BUILD, MINING, Chicken, COW, Plant, MBS respectively correspond to construction, collecting resources, raising chicken, random, members, members, requires operational operations, setting up to TRUE, no need to automation Operation, set to false, such as you only grow, Plant: True, all of the other is false, which reduces unnecessary network operations, improve operation efficiency
-   6. Recover_ENERGY: 500 (If the energy is not enough to return to how much energy, the default 500, please prepare enough meat, the program will not automatically buy meat)
-   7. Construction, collect resources, raise chicken, nurses, seeds, members, need to automate operation, set to true
-   8. Other parameters are set according to your actual situation
-   
+
+Windows system Download [chromedriver_win32.zip]
+6. Differently extract the chromedriver.exe file in the downloaded Chromedriver compression package into the source directory of this item (and main.py in a directory).
+7. Modify the configuration file "user.yml".
+   1. Make a copy of the "user.yml.example" file and rename it to "user.yml".
+   2. Set the various parameters according to your actual situation (Modify "user.yml" recommended using the NodePad ++ editor, download link: [Click to download NodePad ++ Editor] (https://github.com/notepad-plus-plus/notepad-plus- Plus / Releases / Download / V8.2 / NPP.8.2.Installer.x64.exe)))).
+   3. WAX_ACCOUNT: (WAX account, that is, the WAX wallet address, often ending with ".wam").
+   4. Proxy: (You can set the HTTP agent, the format is 127.0.0.1:10809, if you do not need the agent, set to null).
+   5. The following (build, mining, chicken, cow, plant, mbs) correspond to construction, resource collection, chicken raising, cattle raising, farming, and member clicks, which require program automation operations, set to true, do not require program automation operations , set to false, for example, if you only farm land, plant: true, all others are false, which reduces unnecessary network operations and improves operating efficiency.
+   6. recover_energy: 500 (how much energy to recover when the energy is not enough, the default is 500, please prepare enough meat, the program will not automatically buy meat).
+   7. Building, collecting resources, raising chickens, raising cattle, farming, and member clicks require automated operations, set to true.
+   8. Other parameters are set according to your actual situation.
+
 8. After modifying the configuration file, double-click [main.py] to run the script, if the program exits, you can view the log in the logs folder.
-9. After the script is started, a Chrome window will pop up and automatically open the FarMersWorld official website. For the first time, please log in manually. After login is successful, the script will start automation
-10. If you need manual operation, do not operate in the Chrome window opened in the script, the script opens the chrome window, minimized, try not to move it, ask for hand-to-hand, please open the Chrome browser to log in to the game. The game itself can log in in multiple browsers at the same time, and will not put the game t in the script chrome.
-11. Note that an account will run the script for the first time. When the script is automatically harvested, the WAX ​​wallet authorization window may pop up in the Chrome browser, and stop there, this time you need to check the automatic confirmation transaction. And agree to the transaction, so that the script will be automatically processed, in fact, the first harvesting, the first harvesting, it is necessary to automatically agree to the transaction, otherwise, each time you have to pop up the authorization window, the script is only responsible for harvesting crops. Do not deal with authorized things, auto-authorization depends on user account settings
+9. After the script is started, a Chrome window will pop up and automatically open the FarmersWorld official website. For the first time, please log in manually. After login is successful, the script will start automation.
+10. If manual operation is required, please do not operate in the Chrome window opened by the script. The Chrome window opened by the script can be minimized, and try not to touch it. When manual operation is required, please open the Chrome browser to log in to the game. The game supports the possibility of simultaneous login through several browsers and does not require stopping the bot and the Chrome window opened by it.
+11. Note that an account will run the script for the first time. When the script is automatically harvested, the WAX wallet authorization window may pop up in the Chrome browser, and stop there, this time you need to check the automatic confirmation transaction. And agree to the transaction, so that the script will be automatically processed, in fact, the first harvesting, the first harvesting, it is necessary to automatically agree to the transaction, otherwise, each time you have to pop up the authorization window, the script is only responsible for harvesting crops. Do not deal with authorized things, auto-authorization depends on user account settings
 12. Script is more open, please copy the entire source directory, modify the configuration file in another directory [user.yaml] to another account, double-click Run [main.py] to start the second script, with this, Multi-to-interference
 13. Correctly shut down the program, click on the X X in the upper right corner of the script console window, will be closed, or click the script console window, press Ctrl + C, try not to close the script controlled Chrome window, otherwise WebDriver is easy to produce some zombie process
 
@@ -127,14 +127,14 @@ This is because Chrome itself is Google home, Google judges that the Chrome brow
 
 Welcome to reward, support me to continue to improve english version of this project.
 
-My WAX address: bitleggerthx (account support WAX, FWW, FWF, FWG)
+**My WAX address: bitleggerthx (account support WAX, FWW, FWF, FWG)**
 
 
 To support author of Chinese version use this wallets:
 
-TRC20 address: Txmvtz3ndhpvju7symuldlbufwdxa34QIX
+   TRC20 address: Txmvtz3ndhpvju7symuldlbufwdxa34QIX
 
-WAX address: OpenFARMERCN (account support WAX, FWW, FWF, FWG)
+   WAX address: OpenFARMERCN (account support WAX, FWW, FWF, FWG)
 
 
 ### grateful!
@@ -143,7 +143,8 @@ WAX address: OpenFARMERCN (account support WAX, FWW, FWF, FWG)
 ### Other works by the author of the basic Chinese version
 
 > Peasant World Chinese Tutorial: [https://fww.umaske.com] (https://fww.umaske.com)
->
+> 
 > Peasant World Real-Time Monitoring Chinese: [https://fw.umaske.com] (https://fw.umaske.com)
->
-> [Peasant World Assistant --anchor Wallet Edition]: [https://github.com/lintan/openfarmeronanchor] (https://github.com/lintan/openfarmeronanchor)
+> 
+> [Peasant World Assistant --anchor Wallet Edition]: [https://github.com/lintan/openfarmeronanchor] (https://github.com/lintan/openfarmeronanchor)]
+
