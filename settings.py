@@ -20,6 +20,7 @@ class Settings:
 # 用户配置参数
 class user_param:
     rpc_domain_list: list = []
+    query_rpc_domain: str = None
     rpc_domain: str = None
     assets_domain: str = None
     assets_domain_list: list = []
@@ -87,6 +88,7 @@ class user_param:
         return {
             "rpc_domain_list": user_param.rpc_domain_list,
             "rpc_domain": user_param.rpc_domain,
+            "query_rpc_domain": user_param.query_rpc_domain,
             "assets_domain_list": user_param.assets_domain_list,
             "assets_domain": user_param.assets_domain,
             "wax_account": user_param.wax_account,
@@ -138,6 +140,7 @@ class user_param:
 def load_user_param(user: dict):
     user_param.rpc_domain_list = user.get("rpc_domain_list", ['https://api.wax.alohaeos.com'])
     user_param.rpc_domain = user.get("rpc_domain", 'https://api.wax.alohaeos.com')
+    user_param.query_rpc_domain = user.get("query_rpc_domain", 'https://api.wax.alohaeos.com')
     user_param.assets_domain_list = user.get("assets_domain_list", ['https://wax.api.atomicassets.io'])
     user_param.assets_domain = user.get("assets_domain", 'https://wax.api.atomicassets.io')
 
