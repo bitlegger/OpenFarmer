@@ -233,7 +233,6 @@ class Farmer:
 
     def http_post(self, domain, api, post_data):
         # rpc_domain = random.choice(user_param.rpc_domain_list)
-        print("查询节点：{0}".format(domain))
         url = domain + api
         resp = self.http.post(url, json=post_data)
         return resp
