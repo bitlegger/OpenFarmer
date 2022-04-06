@@ -39,7 +39,7 @@ mbs: false
 # 繁殖喂养
 breeding: false
 # 开启会员卡存储挖矿
-mbs_mint: true
+mbs_mint: false
 
 #自动卖资产对应游戏里的Exchange
 #自动卖玉米
@@ -96,11 +96,11 @@ deposit_fww: 0
 # 少于多少食物充值
 fwf_min: 0
 # 每次充值食物数量
-deposit_fwf: 10
+deposit_fwf: 0
 # 少于多少金充值
 fwg_min: 0
 # 每次充值金币数量
-deposit_fwg: 10
+deposit_fwg: 0
 
 # 每次补充满多少能量（一般填写账号的最大能量值）
 recover_energy: 500
