@@ -32,6 +32,7 @@
 也欢迎关注我的CSDN博客
 
 欢迎加入 Telegram 群组反馈问题：https://t.me/OpenFarmer
+微信交流群请加 lintan299
 
 ### 功能
 
