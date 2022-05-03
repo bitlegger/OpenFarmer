@@ -12,7 +12,7 @@ import utils
 from settings import load_user_param, user_param
 import os
 
-version = "1.2en"
+version = "1.2.3en"
 
 
 def resource_path(relative_path):
@@ -35,8 +35,8 @@ class Worker(QThread):
 
     def run(self):
         logger.init_loger(user_param.wax_account)
-        log.info("Project open source address： https://github.com/bitlegger/OpenFarmer")
-        log.info("WAXaccount： {0}".format(user_param.wax_account))
+        log.info("Project open source address： https://github.com/bitlegger/OpenFarmerEn")
+        log.info("WAX account： {0}".format(user_param.wax_account))
         utils.clear_orphan_webdriver()
         self.farmer.rpc_domain = user_param.rpc_domain
         self.farmer.assets_domain = user_param.assets_domain
@@ -55,6 +55,12 @@ class MyDialog(QDialog, Ui_Dialog):
         super().__init__(parent)
         self.user_yml = "user.yml"
         self.farmer = Farmer()
+        if len(sys.argv) == 2:
+            self.user_yml = sys.argv[1]
+        with open(self.user_yml, "r", encoding="utf8") as file:
+            user: dict = yaml.load(file, Loader=yaml.FullLoader)
+            file.close()
+        load_user_param(user)
         self.setupUi(self)
         self.setWindowTitle("Peasant World Assistant{0}".format(version))
         self.setWindowIcon(QtGui.QIcon(resource_path("favicon.ico")))
@@ -71,12 +77,8 @@ class MyDialog(QDialog, Ui_Dialog):
         self.worker = Worker(self.farmer)
 
     def load_yaml(self):
-        if len(sys.argv) == 2:
-            self.user_yml = sys.argv[1]
-        with open(self.user_yml, "r", encoding="utf8") as file:
-            user: dict = yaml.load(file, Loader=yaml.FullLoader)
-            file.close()
-        load_user_param(user)
+
+
         self.update_ui(False)
 
     def update_ui(self, ui_to_user_param: bool):
@@ -99,13 +101,13 @@ class MyDialog(QDialog, Ui_Dialog):
             user_param.recover_energy = self.spinbox_energy.value()
             user_param.min_energy = self.spinbox_min_energy.value()
             user_param.min_durability = self.spinbox_min_durability.value()
-            # 自动提现
+            # Automatic withdrawal
             user_param.withdraw = self.checkbox_withdraw.isChecked()
             user_param.need_fww = int(self.need_fww.text())
             user_param.need_fwf = int(self.need_fwf.text())
             user_param.need_fwg = int(self.need_fwg.text())
             user_param.withdraw_min = int(self.withdraw_min.text())
-            # 自动充值
+            # Automatic recharge
             user_param.auto_deposit = self.checkbox_auto_deposit.isChecked()
             user_param.fww_min = int(self.fww_min.text())
             user_param.fwf_min = int(self.fwf_min.text())
@@ -113,28 +115,28 @@ class MyDialog(QDialog, Ui_Dialog):
             user_param.deposit_fww = int(self.deposit_fww.text())
             user_param.deposit_fwf = int(self.deposit_fwf.text())
             user_param.deposit_fwg = int(self.deposit_fwg.text())
-            # 卖玉米
+            # Corn
             user_param.sell_corn = self.checkbox_sell_corn.isChecked()
             user_param.remaining_corn_num = int(self.remaining_corn_num.text())
-            # 卖大麦
+            # Sell barley
             user_param.sell_barley = self.checkbox_sell_barley.isChecked()
             user_param.remaining_barley_num = int(self.remaining_barley_num.text())
-            # 卖牛奶
+            # Sell milk
             user_param.sell_milk = self.checkbox_sell_milk.isChecked()
             user_param.remaining_milk_num = int(self.remaining_milk_num.text())
-            # 卖鸡蛋
+            # Sell eggs
             user_param.sell_egg = self.checkbox_sell_egg.isChecked()
             user_param.remaining_egg_num = int(self.remaining_egg_num.text())
-            # 自动播种
+            # Automatic seeding
             user_param.auto_plant = self.checkbox_auto_plant.isChecked()
             user_param.barleyseed_num = int(self.barleyseed_num.text())
             user_param.cornseed_num = int(self.cornseed_num.text())
-            # 自动购买
+            # Automatic purchase
             user_param.buy_food = self.checkbox_buy_food.isChecked()
             user_param.buy_barley_seed = self.checkbox_buy_barley_seed.isChecked()
             user_param.buy_corn_seed = self.checkbox_buy_corn_seed.isChecked()
             user_param.buy_food_num = int(self.buy_food_num.text())
-            # 自动购买
+            # Automatic breeding
             user_param.breeding = self.checkbox_breeding.isChecked()
 
         else:
@@ -189,7 +191,7 @@ class MyDialog(QDialog, Ui_Dialog):
             self.checkbox_buy_barley_seed.setChecked(user_param.buy_barley_seed)
             self.checkbox_buy_corn_seed.setChecked(user_param.buy_corn_seed)
             self.buy_food_num.setText(str(user_param.buy_food_num))
-            # Reproduction
+            # Automatic breeding
             self.checkbox_breeding.setChecked(user_param.breeding)
 
     def setEnabled(self, status: bool):
@@ -246,7 +248,7 @@ class MyDialog(QDialog, Ui_Dialog):
         self.checkbox_buy_barley_seed.setEnabled(status)
         self.checkbox_buy_corn_seed.setEnabled(status)
         self.buy_food_num.setEnabled(status)
-        # Reproduction
+        # Automatic breeding
         self.checkbox_breeding.setEnabled(status)
         for i in range(1, 27):
             exec('self.label_{}.setEnabled(status)'.format(i))

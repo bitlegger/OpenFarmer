@@ -64,7 +64,7 @@ class Farmer:
     # url_rpc = "https://api.wax.alohaeos.com/v1/chain/"
     # url_rpc = "https://wax.dapplica.io/v1/chain/"
     # url_table_row = url_rpc + "get_table_rows"
-    # 资产API
+    # asset API
     # url_assets = "https://wax.api.atomicassets.io/atomicassets/v1/assets"
     # url_assets = "https://atomic.wax.eosrio.io/atomicassets/v1/assets"
     waxjs: str = None
@@ -231,10 +231,15 @@ class Farmer:
             self.log.info("Network Error: {0}".format(exp))
             self.log.info("Try again: [{0}]".format(state.attempt_number))
 
-    def http_post(self, post_data):
+    def get_table_row(self, post_data):
+        resp = self.http_post(user_param.query_rpc_domain, '/v1/chain/get_table_rows', post_data)
+        return resp
+
+    def http_post(self, domain, api, post_data):
         # rpc_domain = random.choice(user_param.rpc_domain_list)
-        url_table_row = user_param.rpc_domain + '/v1/chain/get_table_rows'
-        return self.http.post(url_table_row, json=post_data)
+        url = domain + api
+        resp = self.http.post(url, json=post_data)
+        return resp
 
     def table_row_template(self) -> dict:
         post_data = {
@@ -268,7 +273,7 @@ class Farmer:
             "reverse": False,
             "show_payer": False
         }
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get tools config: {0}".format(resp.text))
         resp = resp.json()
         res.init_tool_config(resp["rows"])
@@ -276,20 +281,21 @@ class Farmer:
 
         # crop
         post_data["table"] = "cropconf"
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get crop config: {0}".format(resp.text))
         resp = resp.json()
         res.init_crop_config(resp["rows"])
+
         # animal
         post_data["table"] = "anmconf"
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get animal conf: {0}".format(resp.text))
         resp = resp.json()
         res.init_animal_config(resp["rows"])
 
         # membership card
         post_data["table"] = "mbsconf"
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get mbs config: {0}".format(resp.text))
         resp = resp.json()
         res.init_mbs_config(resp["rows"])
@@ -309,7 +315,7 @@ class Farmer:
             "reverse": False,
             "show_payer": False
         }
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get farming config: {0}".format(resp.text))
         resp = resp.json()
 
@@ -321,7 +327,7 @@ class Farmer:
         post_data["table"] = "accounts"
         post_data["index_position"] = 1
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_table_rows:{0}".format(resp.text))
         resp = resp.json()
         if len(resp["rows"]) == 0:
@@ -352,7 +358,7 @@ class Farmer:
         post_data["table"] = "buildings"
         post_data["index_position"] = 2
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_buildings_info:{0}".format(resp.text))
         resp = resp.json()
         buildings = []
@@ -376,7 +382,7 @@ class Farmer:
         post_data["table"] = "crops"
         post_data["index_position"] = 2
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_crops_info:{0}".format(resp.text))
         resp = resp.json()
         crops = []
@@ -538,7 +544,7 @@ class Farmer:
         post_data["table"] = "breedings"
         post_data["index_position"] = 2
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_breedings:{0}".format(resp.text))
         resp = resp.json()
         if len(resp["rows"]) == 0:
@@ -557,7 +563,7 @@ class Farmer:
         post_data["table"] = "animals"
         post_data["index_position"] = 2
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_animal_info: {0}".format(resp.text))
         resp = resp.json()
         if len(resp["rows"]) == 0:
@@ -690,22 +696,20 @@ class Farmer:
 
     # Get WAX Account Information
     def wax_get_account(self):
-        url = self.url_rpc + "get_account"
         post_data = {"account_name": self.wax_account}
-        resp = self.http.post(url, json=post_data)
+        resp = self.http_post(user_param.query_rpc_domain, '/v1/chain/get_account', post_data)
         self.log.debug("get_account:{0}".format(resp.text))
         resp = resp.json()
         return resp
 
     # Get the balance of the three resources FWF FWG FWW
     def get_fw_balance(self) -> Token:
-        url = self.url_rpc + "get_currency_balance"
         post_data = {
             "code": "farmerstoken",
             "account": self.wax_account,
             "symbol": None
         }
-        resp = self.http.post(url, json=post_data)
+        resp = self.http_post(user_param.query_rpc_domain, '/v1/chain/get_currency_balance', post_data)
 
         self.log.debug("get_fw_balance:{0}".format(resp.text))
         resp = resp.json()
@@ -798,7 +802,7 @@ class Farmer:
         post_data["table"] = "buildings"
         post_data["index_position"] = 2
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_buildings_info: {0}".format(resp.text))
         resp = resp.json()
         for item in resp["rows"]:
@@ -1010,7 +1014,7 @@ class Farmer:
 
         self.burn_assets(asset_ids)
         self.log.warning(
-            "Total sold quantity:[{0}]，Corn [{1}], barley [{2}], milk [{3}], eggs [{4}]".format(len(asset_ids), sell_corn_num, sell_barley_num,
+            "Total sold quantity:[{0}], Corn [{1}], barley [{2}], milk [{3}], eggs [{4}]".format(len(asset_ids), sell_corn_num, sell_barley_num,
                                                                  sell_milk_num, sell_egg_num))
         return True
 
@@ -1074,7 +1078,7 @@ class Farmer:
         post_data["table"] = "tools"
         post_data["index_position"] = 2
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_tools: {0}".format(resp.text))
         resp = resp.json()
         tools = []
@@ -1380,7 +1384,7 @@ class Farmer:
         post_data["index_position"] = 2
         post_data["key_type"] = "i64"
 
-        resp = self.http_post(post_data)
+        resp = self.get_table_row(post_data)
         self.log.debug("get_mbs:{0}".format(resp.text))
         resp = resp.json()
         mbs = []
@@ -1458,16 +1462,15 @@ class Farmer:
         r = self.get_resource()
         self.log.info(f"Gold[{r.gold}]  Wood[{r.wood}]  Food[{r.food}]  Energy[{r.energy}/{r.max_energy}]")
         self.resoure = r
+        time.sleep(cfg.req_interval)
+        self.token = self.get_fw_balance()
+        self.log.info(f"FWG[{self.token.fwg}]  FWW[{self.token.fww}]  FWF[{self.token.fwf}]")
         if self.resoure.energy <= user_param.min_energy:
             self.log.info("The energy is less than the minimum energy configured, and the energy supplement is turned on. {0}".format(self.resoure.max_energy))
             recover = min(user_param.recover_energy, self.resoure.max_energy) - self.resoure.energy
             recover = (recover // Decimal(5)) * Decimal(5)
             self.recover_energy(recover)
             self.resoure.energy += recover
-
-        time.sleep(cfg.req_interval)
-        self.token = self.get_fw_balance()
-        self.log.info(f"FWG[{self.token.fwg}]  FWW[{self.token.fww}]  FWF[{self.token.fwf}]")
 
     def reset_before_scan(self):
         self.not_operational.clear()

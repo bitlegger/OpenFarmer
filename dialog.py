@@ -8,6 +8,8 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+from settings import user_param
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -341,22 +343,24 @@ class Ui_Dialog(object):
         self.comboBox_rpc_domain = QtWidgets.QComboBox(Dialog)
         self.comboBox_rpc_domain.setGeometry(QtCore.QRect(76, 40, 201, 22))
         self.comboBox_rpc_domain.setObjectName("comboBox_rpc_domain")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
-        self.comboBox_rpc_domain.addItem("")
+        for item in user_param.rpc_domain_list:
+            self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
+            # self.comboBox_rpc_domain.addItem("")
         self.label_26 = QtWidgets.QLabel(Dialog)
         self.label_26.setGeometry(QtCore.QRect(460, 42, 71, 16))
         self.label_26.setObjectName("label_26")
         self.comboBox_assets_domain = QtWidgets.QComboBox(Dialog)
         self.comboBox_assets_domain.setGeometry(QtCore.QRect(540, 40, 161, 22))
         self.comboBox_assets_domain.setObjectName("comboBox_assets_domain")
-        self.comboBox_assets_domain.addItem("")
-        self.comboBox_assets_domain.addItem("")
+        for item in user_param.assets_domain_list:
+            self.comboBox_assets_domain.addItem("")
+            #self.comboBox_assets_domain.addItem("")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -422,23 +426,18 @@ class Ui_Dialog(object):
         self.label_23.setToolTip(_translate("Dialog", "Number of purchases"))
         self.label_23.setText(_translate("Dialog", "Purchase quantity："))
         self.buy_food_num.setText(_translate("Dialog", "0"))
-        self.checkbox_build.setText(_translate("Dialog", "Build"))
-        self.checkbox_mining.setText(_translate("Dialog", "Mining"))
-        self.checkbox_chicken.setText(_translate("Dialog", "Chicken"))
-        self.checkbox_plant.setText(_translate("Dialog", "Crop watering"))
-        self.checkbox_cow.setText(_translate("Dialog", "Raise cattle"))
-        self.checkbox_breeding.setText(_translate("Dialog", "Reproduction"))
-        self.checkbox_mbs.setText(_translate("Dialog", "Member"))
-        self.checkbox_mbs_mint.setText(_translate("Dialog", "Member storage"))
-        self.label_25.setText(_translate("Dialog", "RPC node:"))
-        self.comboBox_rpc_domain.setItemText(0, _translate("Dialog", "https://api.wax.alohaeos.com"))
-        self.comboBox_rpc_domain.setItemText(1, _translate("Dialog", "https://wax.dapplica.io"))
-        self.comboBox_rpc_domain.setItemText(2, _translate("Dialog", "https://wax.pink.gg"))
-        self.comboBox_rpc_domain.setItemText(3, _translate("Dialog", "https://api.waxsweden.org"))
-        self.comboBox_rpc_domain.setItemText(4, _translate("Dialog", "https://wax.dapplica.io"))
-        self.comboBox_rpc_domain.setItemText(5, _translate("Dialog", "https://wax.eosphere.io"))
-        self.comboBox_rpc_domain.setItemText(6, _translate("Dialog", "https://api.wax.greeneosio.com"))
-        self.comboBox_rpc_domain.setItemText(7, _translate("Dialog", "https://wax.cryptolions.io"))
+        for index, item in enumerate(user_param.rpc_domain_list):
+            self.comboBox_rpc_domain.setItemText(index, _translate("Dialog", item))
+            # self.comboBox_rpc_domain.setItemText(1, _translate("Dialog", "https://wax.dapplica.io"))
+            # self.comboBox_rpc_domain.setItemText(2, _translate("Dialog", "https://wax.pink.gg"))
+            # self.comboBox_rpc_domain.setItemText(3, _translate("Dialog", "https://api.waxsweden.org"))
+            # self.comboBox_rpc_domain.setItemText(4, _translate("Dialog", "https://wax.dapplica.io"))
+            # self.comboBox_rpc_domain.setItemText(5, _translate("Dialog", "https://wax.eosphere.io"))
+            # self.comboBox_rpc_domain.setItemText(6, _translate("Dialog", "https://api.wax.greeneosio.com"))
+            # self.comboBox_rpc_domain.setItemText(7, _translate("Dialog", "https://wax.cryptolions.io"))
+
         self.label_26.setText(_translate("Dialog", "Atomic node"))
-        self.comboBox_assets_domain.setItemText(0, _translate("Dialog", "https://wax.api.atomicassets.io"))
-        self.comboBox_assets_domain.setItemText(1, _translate("Dialog", "https://atomic.wax.eosrio.io"))
+        for index, item in enumerate(user_param.assets_domain_list):
+            self.comboBox_assets_domain.setItemText(index, _translate("Dialog", item))
+            # self.comboBox_assets_domain.setItemText(0, _translate("Dialog", "https://wax.api.atomicassets.io"))
+            # self.comboBox_assets_domain.setItemText(1, _translate("Dialog", "https://atomic.wax.eosrio.io"))

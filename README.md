@@ -120,7 +120,7 @@ This is because the program is the operation of directly calling the intelligent
 
 ![image](https://Raw.githubuserContent.com/encoderlee/openfarmer/main/doc/question1.png)
 
-This is because Chrome itself is Google home, Google judges that the Chrome browser is being controlled, and it is not safe and logged in. The solution is to log in the WAX ​​cloud money package, click [Forgot Password], enter the Google Mailpick account, reset the password according to the prompt (can be reset to the same password as the original password), can be reset, Wax cloud money package login interface, enter the Google Mail account and reset the password to log in, without a point Google icon, do not need to log in with the Google account.
+This is because Chrome itself is Google home, Google judges that the Chrome browser is being controlled, and it is not safe and logged in. The solution is to log in the WAX ​​cloud money package, click [Forgot Password], enter the wax节点链接,默认使用第一个节点 can be reset, Wax cloud money package login interface, enter the Google Mail account and reset the password to log in, without a point Google icon, do not need to log in with the Google account.
 
 
 ### Restaurant

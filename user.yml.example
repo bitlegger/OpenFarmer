@@ -7,12 +7,12 @@ rpc_domain_list:
  - https://wax.eosphere.io
  - https://api.wax.greeneosio.com
  - https://wax.cryptolions.io
-
 # Atomic market node link, the first node is used by default
 assets_domain_list:
   - https://wax.api.atomicassets.io
   - https://atomic.wax.eosrio.io
-
+# Query node
+query_rpc_domain: https://api.wax.alohaeos.com
 # Selected WAX node
 rpc_domain: https://api.wax.alohaeos.com
 # Selected atomic market node
@@ -96,11 +96,11 @@ deposit_fww: 0
 # Less than how much food recharge
 fwf_min: 0
 # Number of foods per recharge
-deposit_fwf: 10
+deposit_fwf: 0
 # How much gold recharge
 fwg_min: 0
 # Number of gold coins each time
-deposit_fwg: 10
+deposit_fwg: 0
 
 # How much energy is added each time (generally fill in the maximum energy value of the account)
 recover_energy: 500
